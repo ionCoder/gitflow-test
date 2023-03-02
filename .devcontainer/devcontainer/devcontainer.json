@@ -1,0 +1,13 @@
+{
+    "name": "gitflow-test",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "github.copilot"
+            ]
+        }
+    }
+}
