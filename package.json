@@ -7,9 +7,12 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e-headless": "vue-cli-service test:e2e --headless",
-    "test:e2e": "vue-cli-service test:e2e"
+    "test:e2e": "vue-cli-service test:e2e",
+    "prepare": "husky install"
   },
   "dependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
     "core-js": "^3.8.3",
     "vue": "^3.2.13"
   },
@@ -20,6 +23,7 @@
     "@vue/cli-service": "~5.0.0",
     "@vue/test-utils": "^2.0.0-0",
     "chai": "^4.2.0",
-    "cypress": "^9.7.0"
+    "cypress": "^9.7.0",
+    "husky": "^8.0.0"
   }
 }
