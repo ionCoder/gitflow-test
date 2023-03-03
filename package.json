@@ -17,6 +17,8 @@
     "vue": "^3.2.13"
   },
   "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^8.0.7",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-e2e-cypress": "~5.0.0",
     "@vue/cli-plugin-unit-mocha": "~5.0.0",
@@ -24,6 +26,7 @@
     "@vue/test-utils": "^2.0.0-0",
     "chai": "^4.2.0",
     "cypress": "^9.7.0",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "semantic-release": "^20.1.1"
   }
 }
