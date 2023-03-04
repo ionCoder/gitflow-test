@@ -22,9 +22,7 @@ jobs:
         id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "New release version is ${{ steps.release.outputs.release-version }}"
-        id: release
-        if: steps.release.outcome == 'success'
+      - run: echo "New release version is ${{ steps.release.outputs.new-release-version }}"
     outputs:
       new-release-published: ${{ steps.release.outputs.new-release-published }}
       new-release-version: ${{ steps.release.outputs.new-release-version }}
