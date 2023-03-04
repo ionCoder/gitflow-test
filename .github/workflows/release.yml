@@ -21,6 +21,9 @@ jobs:
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo "New release version is ${{ steps.release.outputs.new-release-version }}"
+        id: release
+        if: steps.release.outcome == 'success'
     outputs:
       new-release-version: ${{ steps.release.outputs.new-release-version }}
   build:
