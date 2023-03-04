@@ -19,6 +19,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npx semantic-release
+        id: get-next-version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: echo "New release version is ${{ steps.release.outputs.new-release-version }}"
