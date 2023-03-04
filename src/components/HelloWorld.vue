@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <button @click="counter--">-</button>
+    <input type="text" v-model="counter">
+    <button @click="counter++">+</button>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -34,6 +37,11 @@
 <script>
 export default {
   name: 'HelloWorld',
+  data() {
+    return {
+      counter: 0
+    }
+  },
   props: {
     msg: String
   }
