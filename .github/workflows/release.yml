@@ -21,13 +21,15 @@ jobs:
       - run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      new-release-version: ${{ steps.release.outputs.new-release-version }}
   build:
     needs: release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag gitflow-test-gui:${{ github.ref }}
+        run: docker build . --file Dockerfile --tag gitflow-test-gui:${{ needs.release.outputs.new-release-version }}
       - name: Log in to the Container registry
         uses: docker/login-action@v1 
         with:
@@ -43,4 +45,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ghcr.io/ioncoder/gitflow-test-gui:${{ github.ref}}
+          tags: ghcr.io/ioncoder/gitflow-test-gui:${{ needs.release.outputs.new-release-version }}
