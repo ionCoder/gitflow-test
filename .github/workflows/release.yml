@@ -12,26 +12,27 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
       - run: npm ci
       - run: npm run build
       - run: npx semantic-release
-        id: get-next-version
+        id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo "New release version is ${{ steps.release.outputs.new-release-version }}"
+      - run: echo "New release version is ${{ steps.release.outputs.release-version }}"
         id: release
         if: steps.release.outcome == 'success'
     outputs:
+      new-release-published: ${{ steps.release.outputs.new-release-published }}
       new-release-version: ${{ steps.release.outputs.new-release-version }}
   build:
     needs: release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag gitflow-test-gui:${{ needs.release.outputs.new-release-version }}
       - name: Log in to the Container registry
