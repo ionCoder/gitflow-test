@@ -3,9 +3,8 @@
 name: Docker Image CI
 
 on:
-  push:
-    tags:
-      - '*'
+  release:
+    types: [published]
 
 jobs:
 
