@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <h3>Counter</h3>
     <button @click="counter--">-</button>
     <input type="text" v-model="counter">
     <button @click="counter++">+</button>
